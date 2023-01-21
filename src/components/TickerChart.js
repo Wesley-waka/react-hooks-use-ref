@@ -6,10 +6,13 @@ function Ticker() {
   const [price, setPrice] = useState({ value: 0, ticks: 0 });
   const [color, setColor] = useState("black");
   const prevPrice = useRef(price);
+  console.log(prevPrice);
   const canvasRef = useRef();
+  // console.log(canvasRef);
 
   useEffect(() => {
     addPoint(canvasRef.current, prevPrice.current, price);
+    console.log(prevPrice.current, price);
   }, [price]);
 
   useEffect(() => {
@@ -23,6 +26,7 @@ function Ticker() {
   }, []);
 
   useEffect(() => {
+    console.log(prevPrice.current, price)
     if (prevPrice.current.value < price.value) {
       setColor("green");
     } else if (prevPrice.current.value > price.value) {
